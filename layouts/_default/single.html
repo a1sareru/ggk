@@ -1,34 +1,117 @@
 {{ define "main" }}
-<article class="post-single">
-  <header class="post-header">
-    <h1 class="post-title">{{ .Title }}</h1>
-    <div class="post-meta">
-      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+<div class="post-layout">
+  {{ if .TableOfContents }}
+  <aside class="toc-sidebar" id="toc-sidebar">
+    <div class="toc-inner">
+      <h2 class="toc-title">目次</h2>
+      {{ .TableOfContents }}
     </div>
-  </header>
+  </aside>
+  {{ end }}
 
-  <div class="post-taxonomies">
-    {{ with .Params.categories }}
-    <div class="post-categories">
-      <span>カテゴリ：</span>
-      {{ range . }}
-      <a href="{{ "categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+  <article class="post-single">
+    <header class="post-header">
+      <h1 class="post-title">{{ .Title }}</h1>
+      <div class="post-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      </div>
+    </header>
+
+    <div class="post-taxonomies">
+      {{ with .Params.categories }}
+      <div class="post-categories">
+        <span>カテゴリ：</span>
+        {{ range . }}
+        <a href="{{ "categories/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      {{ with .Params.tags }}
+      <div class="post-tags">
+        <span>タグ：</span>
+        {{ range . }}
+        <a href="{{ "tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
+        {{ end }}
+      </div>
       {{ end }}
     </div>
-    {{ end }}
 
-    {{ with .Params.tags }}
-    <div class="post-tags">
-      <span>タグ：</span>
-      {{ range . }}
-      <a href="{{ "tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>
-      {{ end }}
+    <div class="post-content">
+      {{ .Content }}
     </div>
-    {{ end }}
-  </div>
+  </article>
+</div>
 
-  <div class="post-content">
-    {{ .Content }}
-  </div>
-</article>
+{{ if .TableOfContents }}
+<button class="toc-toggle" id="toc-toggle" aria-label="目次を開く">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="12" x2="15" y2="12"></line>
+    <line x1="3" y1="18" x2="9" y2="18"></line>
+  </svg>
+</button>
+<div class="toc-overlay" id="toc-overlay"></div>
+<script>
+(function() {
+  const toggle = document.getElementById('toc-toggle');
+  const sidebar = document.getElementById('toc-sidebar');
+  const overlay = document.getElementById('toc-overlay');
+  if (!toggle || !sidebar) return;
+
+  toggle.addEventListener('click', function() {
+    sidebar.classList.toggle('toc-open');
+    overlay.classList.toggle('toc-overlay-visible');
+    toggle.classList.toggle('toc-toggle-active');
+  });
+
+  overlay.addEventListener('click', function() {
+    sidebar.classList.remove('toc-open');
+    overlay.classList.remove('toc-overlay-visible');
+    toggle.classList.remove('toc-toggle-active');
+  });
+
+  // Close TOC when clicking a link (mobile)
+  sidebar.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (window.innerWidth < 1280) {
+        sidebar.classList.remove('toc-open');
+        overlay.classList.remove('toc-overlay-visible');
+        toggle.classList.remove('toc-toggle-active');
+      }
+    });
+  });
+
+  // Scroll spy: highlight current section in TOC
+  var tocLinks = sidebar.querySelectorAll('a');
+  var headings = [];
+  tocLinks.forEach(function(link) {
+    var id = link.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if (el) headings.push({ id: id, el: el, link: link });
+  });
+
+  function updateActive() {
+    var scrollY = window.scrollY;
+    var current = null;
+    for (var i = 0; i < headings.length; i++) {
+      if (headings[i].el.offsetTop - 80 <= scrollY) {
+        current = headings[i];
+      }
+    }
+    tocLinks.forEach(function(l) { l.classList.remove('toc-active'); });
+    if (current) current.link.classList.add('toc-active');
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(function() { updateActive(); ticking = false; });
+      ticking = true;
+    }
+  });
+  updateActive();
+})();
+</script>
+{{ end }}
 {{ end }}
