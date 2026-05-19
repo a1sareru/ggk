@@ -1,0 +1,18 @@
+{{ define "main" }}
+<section class="taxonomy-page">
+  <h1>{{ .Title }}</h1>
+
+  {{ if .Pages }}
+  <ul class="taxonomy-list">
+    {{ range .Pages }}
+    <li class="taxonomy-item">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <span class="taxonomy-count">({{ len .Pages }})</span>
+    </li>
+    {{ end }}
+  </ul>
+  {{ else }}
+  <p>記事がありません。</p>
+  {{ end }}
+</section>
+{{ end }}

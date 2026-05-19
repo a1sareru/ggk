@@ -1,0 +1,12 @@
+baseURL = "https://<username>.github.io/ggk/"
+locale = "ja"
+title = "ごがく"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[params]
+
+[markup.goldmark.renderer]
+  unsafe = true

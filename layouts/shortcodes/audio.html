@@ -1,0 +1,13 @@
+{{ $src := .Get "src" }}
+{{ if $src }}
+<div class="audio-player">
+  <audio controls preload="metadata">
+    <source src="{{ $src | relURL }}" type="audio/mpeg">
+    お使いのブラウザは音声再生に対応していません。
+  </audio>
+</div>
+{{ else }}
+<div class="audio-error">
+  <p>⚠️ 音声ファイルのパスが未指定または無効です。</p>
+</div>
+{{ end }}

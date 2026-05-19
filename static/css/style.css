@@ -1,0 +1,524 @@
+/* === Reset / Normalize === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1, h2, h3, h4, h5, h6,
+p,
+ul, ol,
+figure,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+/* === Base Typography === */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #2c3e50;
+  background-color: #fafafa;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Content Container === */
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* === Headings === */
+h1, h2, h3 {
+  color: #1a202c;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* === Paragraphs === */
+p {
+  margin-bottom: 1.2rem;
+}
+
+/* === Links === */
+a {
+  color: #2b6cb0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #1a4a7a;
+  text-decoration: underline;
+}
+
+/* === Lists === */
+ul, ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.3rem;
+}
+
+/* === Responsive Layout === */
+
+/* Mobile: < 768px */
+@media (max-width: 767px) {
+  body {
+    font-size: 15px;
+  }
+
+  main {
+    padding: 1.25rem 1rem;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.05rem;
+    margin-top: 1.25rem;
+  }
+}
+
+/* Tablet: 768px - 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+  main {
+    padding: 2rem 2rem;
+  }
+}
+
+/* Desktop: > 1024px */
+@media (min-width: 1025px) {
+  main {
+    max-width: 800px;
+    padding: 2.5rem 2rem;
+  }
+}
+
+/* === Site Header / Navigation === */
+.site-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1rem 1.5rem;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.site-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #1a202c;
+}
+
+.site-title:hover {
+  text-decoration: none;
+  color: #2b6cb0;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.site-nav a {
+  color: #4a5568;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: #2b6cb0;
+  text-decoration: none;
+}
+
+/* Navigation responsive adjustments */
+@media (max-width: 767px) {
+  .header-container {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .site-nav {
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .header-container {
+    max-width: 800px;
+  }
+}
+
+/* === Article Content Area === */
+
+/* Post header */
+.post-header {
+  margin-bottom: 2rem;
+}
+
+/* Post title */
+.post-title {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #1a202c;
+  line-height: 1.3;
+}
+
+/* Post meta (date and language label) */
+.post-meta {
+  margin-top: 0.5rem;
+  color: #718096;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.post-meta .language-label {
+  background-color: #ebf4ff;
+  color: #2b6cb0;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Post content */
+.post-content {
+  line-height: 1.8;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.post-content h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.post-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Code blocks */
+.post-content pre {
+  background-color: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.post-content pre code {
+  font-family: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas,
+    "DejaVu Sans Mono", monospace;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* Inline code */
+.post-content p code,
+.post-content li code {
+  font-family: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas,
+    "DejaVu Sans Mono", monospace;
+  background-color: #edf2f7;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.88em;
+  color: #c53030;
+}
+
+/* Blockquotes */
+.post-content blockquote {
+  border-left: 4px solid #cbd5e0;
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  color: #4a5568;
+  font-style: italic;
+  background-color: #f7fafc;
+  border-radius: 0 4px 4px 0;
+}
+
+.post-content blockquote p {
+  margin-bottom: 0;
+}
+
+.post-content blockquote p + p {
+  margin-top: 0.75rem;
+}
+
+/* Article content images */
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+/* Article content horizontal rule */
+.post-content hr {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 2rem 0;
+}
+
+/* Article content tables */
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.post-content th,
+.post-content td {
+  border: 1px solid #e2e8f0;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.post-content th {
+  background-color: #f7fafc;
+  font-weight: 600;
+}
+
+/* === Audio Player === */
+.audio-player {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  background-color: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.audio-player audio {
+  width: 100%;
+  display: block;
+  outline: none;
+}
+
+.audio-error {
+  margin: 1.5rem 0;
+  padding: 0.75rem 1rem;
+  background-color: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-left: 4px solid #f59e0b;
+  border-radius: 4px;
+  color: #92400e;
+  font-size: 0.9rem;
+}
+
+.audio-error p {
+  margin-bottom: 0;
+}
+
+/* === Category & Tag Badges === */
+.post-taxonomies {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.post-categories,
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.post-categories > span,
+.post-tags > span {
+  color: #718096;
+  font-size: 0.85rem;
+  margin-right: 0.25rem;
+}
+
+.post-categories a,
+.post-tags a {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.post-categories a {
+  background-color: #ebf4ff;
+  color: #2b6cb0;
+}
+
+.post-categories a:hover {
+  background-color: #bee3f8;
+  color: #1a4a7a;
+  text-decoration: none;
+}
+
+.post-tags a {
+  background-color: #f0fff4;
+  color: #276749;
+}
+
+.post-tags a:hover {
+  background-color: #c6f6d5;
+  color: #1a4731;
+  text-decoration: none;
+}
+
+/* Taxonomy list page styles */
+.taxonomy-page h1 {
+  margin-bottom: 1.25rem;
+}
+
+.taxonomy-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.taxonomy-item {
+  margin-bottom: 0;
+}
+
+.taxonomy-item a {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background-color: #edf2f7;
+  color: #4a5568;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.taxonomy-item a:hover {
+  background-color: #e2e8f0;
+  color: #2b6cb0;
+  text-decoration: none;
+}
+
+.taxonomy-count {
+  font-size: 0.8rem;
+  color: #a0aec0;
+  margin-left: 0.25rem;
+}
+
+/* Mobile adjustments for article content */
+@media (max-width: 767px) {
+  .post-title {
+    font-size: 1.5rem;
+  }
+
+  .post-content pre {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .post-content blockquote {
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+  }
+
+  .post-content table {
+    font-size: 0.85rem;
+  }
+
+  .post-content th,
+  .post-content td {
+    padding: 0.4rem 0.5rem;
+  }
+
+  .audio-player {
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+  }
+
+  .audio-error {
+    margin: 1rem 0;
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablet adjustments for audio player */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .audio-player {
+    padding: 1rem 1.25rem;
+  }
+}
+
+/* Desktop adjustments for audio player */
+@media (min-width: 1025px) {
+  .audio-player {
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+/* === More Link === */
+.more-link {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+.more-link a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2b6cb0;
+  transition: color 0.2s ease;
+}
+
+.more-link a:hover {
+  color: #1a4a7a;
+}
