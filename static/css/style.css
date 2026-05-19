@@ -405,13 +405,13 @@ li {
 }
 
 .post-tags a {
-  background-color: #f0fff4;
-  color: #276749;
+  background-color: #f5f3ff;
+  color: #6b46c1;
 }
 
 .post-tags a:hover {
-  background-color: #c6f6d5;
-  color: #1a4731;
+  background-color: #ede9fe;
+  color: #553c9a;
   text-decoration: none;
 }
 
